@@ -45,3 +45,10 @@ assert.lengthOf(tea.flavors, 3);
 ```
 
 https://www.chaijs.com/
+
+## sinon
+
+Standalone test spies, stubs and mocks for JavaScript.
+Works with any unit testing framework.
+
+https://sinonjs.org/
