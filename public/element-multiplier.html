@@ -1,0 +1,36 @@
+<template>
+    <span id="multiplier"></span> * <span id="multiplicand"></span> = <span id="result"></span>
+</template>
+
+<script>
+
+    (function(window, document) {
+        var ownerDocument =  (document._currentScript || document.currentScript).ownerDocument;
+        var template = ownerDocument.querySelector('template').content;
+        var elementPrototype = Object.create(HTMLElement.prototype);
+        var multiplier = 0, multiplicand = 0, result = 0;
+        elementPrototype.createdCallback = function() {
+            var shadowRoot = this.createShadowRoot();
+            var clone = document.importNode(template, true);
+            shadowRoot.appendChild(clone);
+            this.multiplier = shadowRoot.querySelector('#multiplier');
+            this.multiplicand = shadowRoot.querySelector('#multiplicand');
+            this.result = shadowRoot.querySelector('#result');
+            this.calculate();
+        };
+
+        elementPrototype.attributeChangedCallback = function(attr, oldVal, newVal) {
+            this.calculate();
+        };
+
+        elementPrototype.calculate = function(){
+            multiplier = parseFloat( this.getAttribute('multiplier') );
+            multiplicand = parseFloat( this.getAttribute('multiplicand') );
+            this.multiplier.textContent = multiplier;
+            this.multiplicand.textContent = multiplicand;
+            this.result.textContent = multiplicand*multiplier;
+        };
+        window.MyElement = document.registerElement('element-multiplier', {prototype: elementPrototype });
+    })(window, document);
+
+</script>
