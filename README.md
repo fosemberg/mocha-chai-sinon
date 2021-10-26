@@ -7,6 +7,15 @@ study project to understand how to work with tree packages:
 
 ## understanding rus 
 
+### super short
+
+- **mocha** - фреймворк для написания тестов
+- **chai** - библиотека assert-ов
+- **sinon** - ьиблиотека для подмены и слежения за функциями
+- **karma** - инструмент для запуска тестов
+
+### mine
+
 **mocha** - фреймворк для тестирования, благодаря ему можно писать:
 - ```descript('popup checking')```
 - ```it('should show popup')```
